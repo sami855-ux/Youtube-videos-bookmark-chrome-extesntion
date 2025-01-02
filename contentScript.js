@@ -12,6 +12,8 @@
 
       //Load the new video
       newVideoLoaded()
+    } else if (type === "PLAY_VIDEO") {
+      youtubePlayer.currentTime = value
     }
   })
 

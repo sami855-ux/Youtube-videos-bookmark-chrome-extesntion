@@ -37,7 +37,16 @@ const viewBookmarks = (currentVideoBookmark = []) => {
   }
 }
 
-const onPlay = (e) => {}
+const onPlay = async (e) => {
+  const bookmarkTime = e.target.parentNode.parentNode.getAttribute("timestamp")
+  const activeTab = await getActiveURL()
+
+  //Send a message to the content script to play the video at the bookmarked time
+  chrome.tabs.sendMessage(activeTab.id, {
+    type: "PLAY_VIDEO",
+    time: bookmarkTime,
+  })
+}
 
 const onDelete = (e) => {}
 
