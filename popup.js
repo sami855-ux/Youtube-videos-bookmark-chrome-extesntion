@@ -8,6 +8,11 @@ const addNewBookmark = (bookmarkElement, bookmark) => {
   bookmarkTitleElement.className = "bookmark-title"
 
   newBookmarkElement.id = "bookmark-" + bookmark.time
+  newBookmarkElement.className = "bookmark"
+  newBookmarkElement.setAttribute("timestamp", bookmark.time)
+
+  newBookmarkElement.appendChild(bookmarkTitleElement)
+  bookmarkElement.appendChild(newBookmarkElement)
 }
 
 const viewBookmarks = (currentVideoBookmark = []) => {
