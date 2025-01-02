@@ -14,6 +14,16 @@
       newVideoLoaded()
     } else if (type === "PLAY_VIDEO") {
       youtubePlayer.currentTime = value
+    } else if (type === "DELETE_BOOKMARK") {
+      currentVideoBookmark = currentVideoBookmark.filter(
+        (b) => b.time !== value
+      )
+
+      chrome.storage.sync.set({
+        [currentVideo]: JSON.stringify(currentVideoBookmark),
+      })
+
+      response(currentVideoBookmark)
     }
   })
 
