@@ -14,7 +14,7 @@
     }
   })
 
-  const newVideoLoaded = () => {
+  const newVideoLoaded = async () => {
     const bookmarkBntExists = document.getElementsByClassName("bookmark-btn")[0]
 
     if (!bookmarkBntExists) {
@@ -31,6 +31,26 @@
 
       //Add the bookmark button to the youtube left controller
       youtubeLeftController.appendChild(bookmarkBtn)
+
+      //Add a listener to the bookmark button
+      bookmarkBtn.addEventListener("click", addNewBookmarkEventHandler)
+    }
+  }
+
+  newVideoLoaded()
+
+  const addNewBookmarkEventHandler = () => {
+    const currentTime = youtubePlayer.currentTime
+    const newBookmark = {
+      time: currentTime,
+      desc: "Bookmark added at " + getTime(currentTime),
     }
   }
 })()
+
+const getTime = (time) => {
+  const date = new Date(0)
+  date.setSeconds(time)
+
+  return date.toISOString().substr(11, 8)
+}
