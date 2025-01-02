@@ -23,6 +23,14 @@
       bookmarkBtn.src = chrome.runtime.getURL("assets/bookmark.png")
       bookmarkBnt.className = "ytp-button " + "bookmark-btn"
       bookmarkBtn.title = "Click to bookmark current timestamp for this video"
+
+      //Select the youtube left controller and video stream
+      youtubeLeftController =
+        document.getElementsByClassName("ytp-left-controls")[0]
+      youtubePlayer = document.getElementsByClassName("video-stream")[0]
+
+      //Add the bookmark button to the youtube left controller
+      youtubeLeftController.appendChild(bookmarkBtn)
     }
   }
 })()
